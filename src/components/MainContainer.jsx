@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import cube from "../assets/cube.png"
 import home from "../assets/house.png"
@@ -6,34 +6,41 @@ import ring from "../assets/ring.png"
 import { YellowButton } from './YellowButton'
 import { ReactLogo } from './ReactLogo'
 import line from "../assets/line.png"
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 
 export const MainContainer = () => {
-    return (
-        <DIV>
+  useEffect(() => {
+    AOS.init({ duration: 1500 });
+  }, []);
 
-            <div className='headerContainer'>
-                <div className="heading_continer">
-                    <h1>YOU<span>R </span>G<span>a</span>teway</h1>
-                    <h1>To</h1>
-                    <h1><span>D</span>efi <span id='position_relative'>on</span> <span className='bitcoint_color'>BitCoin</span></h1>
+  return (
+    <DIV>
 
-                    <img src={line} id="line" alt="" />
+      <div className='headerContainer'>
+        <div className="heading_continer">
+          <h1 data-aos="fade-left"  >YOU<span>R </span>G<span>a</span>teway</h1>
+          <h1 data-aos="fade-up">To</h1>
+          <h1 data-aos="fade-right"><span>D</span>efi <span id='position_relative'>on</span> <span className='bitcoint_color'>BitCoin</span></h1>
 
-                </div>
-                <div className="headerImageContainer">
-                    <img id='house' src={home} alt="home" />
-                    <img src={ring} id="ring" alt="ring" />
-                </div>
-            </div>
-            <img id='cube' src={cube} alt="" />
+          <img src={line} id="line" alt="" />
 
-            <p className='dummyText'>Lorem ipsum dolor sit amet consectetur. Porta amet tellus suspendisse id velit proin eleifend id mauris. Amet sem in id eget nunc quam lacus tellus augue.</p>
-            <YellowButton text={"Details"} />
-            <ReactLogo />
+        </div>
+        <div data-aos="fade-up" className="headerImageContainer">
+          <img id='house' src={home} alt="home" />
+          <img src={ring} id="ring" alt="ring" />
+        </div>
+      </div>
+      <img id='cube' src={cube} alt="" />
+
+      <p className='dummyText'>Lorem ipsum dolor sit amet consectetur. Porta amet tellus suspendisse id velit proin eleifend id mauris. Amet sem in id eget nunc quam lacus tellus augue.</p>
+      <YellowButton text={"Details"} />
+      <ReactLogo />
 
 
-        </DIV>
-    )
+    </DIV>
+  )
 }
 
 

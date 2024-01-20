@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import line from "../assets/line.png"
 import ring from "../assets/ring.png"
@@ -9,15 +9,23 @@ import coin from "../assets/coin.png"
 import pin from "../assets/pin.png"
 import rocket from "../assets/rocket.png"
 import dollar from "../assets/dollar.png"
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 export const Product = () => {
+
+    useEffect(() => {
+        AOS.init({ duration: 2000 });
+    }, []);
+
     return (
         <DIV>
-            <div className="productHeading">
+            <div data-aos="fade-up" className="productHeading">
                 <h1>Our <span>Products</span></h1>
                 <img src={line} id='line' alt="" />
             </div>
-            <p id='headingPra'>Pellentesque habitant morbi tristique senectus et netus et Pellentesque habitant morbi.</p>
-            <div className='card_container'>
+            <p data-aos="fade-up" id='headingPra'>Pellentesque habitant morbi tristique senectus et netus et Pellentesque habitant morbi.</p>
+            <div data-aos="fade-up" className='card_container'>
                 <div className='card'>
                     <img className="top_ring " src={topRing} alt="" />
                     <img className="bottom_ring " src={ring} alt="" />
@@ -118,7 +126,7 @@ const DIV = styled.div`
         border-radius: 12px;
         background-color: #FECC00;
         margin: auto;
-        animation: ease-out infinite  5s;
+        transition: transform 1s ease;
         }
 
         .innerCard {
@@ -127,25 +135,28 @@ const DIV = styled.div`
             padding: 20px;
             border-radius: 12px;
             padding-top: 10px;
-           
+           transition: transform 1s ease;
         }
         
         .innerCard:hover >img:nth-child(1) {
             position: relative;
-            top:-90px ;     
+            top:-90px ;    
+            transition: transform 1s ease; 
             transform: rotate(-10deg);
-            animation : all 5s linear;
          }
 
          .card:hover > img:nth-child(1){
             display: block;
+           
             transform: translate(-50px, -70px);
-            
+            opacity: 1;
          }
 
           .card:hover > img:nth-child(2){
             display: block;
+           
             transform: translate(55px, 80px);
+            opacity: 1;
             
          }
          .card_container {
@@ -165,13 +176,15 @@ const DIV = styled.div`
     width: 120px;
     bottom: 0;
     right: 0;
-    display: none;
+    opacity: 0;
+    transition: transform 1s ease;
    }
 
    .top_ring {
     position: absolute;
     width: 100px;
-   display: none;
+   opacity: 0;
+   transition: transform 1s ease;
    }
    .centerImage {
     margin: 10px auto;

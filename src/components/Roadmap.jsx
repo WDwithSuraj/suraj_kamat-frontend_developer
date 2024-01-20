@@ -1,20 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import greyLine from "../assets/grey_line.png"
-import quoteSign from "../assets/quoteSign.png"
 import { RoadmapCard } from './RoadmapCard'
 import { MiddleDot } from './MiddleDot'
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export const Roadmap = () => {
+    useEffect(() => {
+        AOS.init({ duration: 2000 });
+    }, []);
     return (
-        <DIV>
-            <div className="RoadmapHeading">
+        <DIV >
+            <div data-aos="fade-up" className="RoadmapHeading">
                 <h1>Roadmap</h1>
                 <img src={greyLine} id='line' alt="" />
             </div>
             {/* <img src={quoteSign} id='quote' alt="siggn" /> */}
-            <div className="slider">
+            <div data-aos="fade-up" className="slider">
                 <div className="container">
                     <MiddleDot position={"first"} />
                     <RoadmapCard index={1} />

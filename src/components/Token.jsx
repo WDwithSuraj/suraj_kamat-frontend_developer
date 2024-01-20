@@ -4,6 +4,8 @@ import line from "../assets/line.png"
 import axios from 'axios'
 
 import { TokenCard } from './TokenCard'
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export const Token = () => {
     const [tokenData, setTokenData] = useState([])
@@ -13,18 +15,22 @@ export const Token = () => {
     }
 
     useEffect(() => {
+        AOS.init({ duration: 2000 });
+    }, []);
+
+    useEffect(() => {
         getData()
     }, [])
 
     return (
         <DIV>
-            <div className="tokenHeading">
+            <div data-aos="fade-up" className="tokenHeading">
                 <h1>Our <span id="token">Tokens</span></h1>
                 <img src={line} id='line' alt="" />
             </div>
-            <p id='headingPra'>Pellentesque habitant morbi tristique senectus et netus et Pellentesque habitant morbi.</p>
+            <p data-aos="fade-up" id='headingPra'>Pellentesque habitant morbi tristique senectus et netus et Pellentesque habitant morbi.</p>
 
-            <div className="card_container">
+            <div data-aos="fade-up" className="card_container">
                 {
                     tokenData?.map((item, index) => {
                         return (
